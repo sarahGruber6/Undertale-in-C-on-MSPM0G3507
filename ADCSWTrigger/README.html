@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:w="urn:schemas-microsoft-com:office:word"
+ xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+ xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+ xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=windows-1252">
+  <meta name="ProgId" content="Word.Document">
+  <meta name="Generator" content="Microsoft Word 14">
+  <meta name="Originator" content="Microsoft Word 14">
+  <base target="_parent">
+  <link rel="Edit-Time-Data" href="index_files/editdata.mso">
+  <title>ADCSWTrigger</title>
+  <o:smarttagtype
+ namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="place"></o:smarttagtype><o:smarttagtype
+ namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="PlaceName"></o:smarttagtype>
+  <o:smarttagtype
+ namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="PlaceType"></o:smarttagtype>
+  <link rel="themeData" href="index_files/themedata.thmx">
+  <link rel="colorSchemeMapping"
+ href="index_files/colorschememapping.xml">
+  <style>
+  </style>
+</head>
+<body style="background-color: white;" alink="#0000ff" lang="EN-US"
+ link="blue" vlink="#c40026">
+<div class="WordSection1">
+<p style="text-align: center;" align="center"><span
+ style="font-size: 18pt;">ADCSWTrigger</span><br>
+<table class="MsoNormalTable"
+ style="border: 3pt outset ; background: rgb(255, 204, 153) none repeat scroll 0% 50%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; width: 100%;"
+ border="1" cellpadding="0" width="100%">
+<tr>
+<td>
+<p><b><span style="font-size: 18pt;">Readme</b></span>
+            <br> &nbsp;<br>
+This is a C language project that demonstrates the analog to
+digital converter (ADC). <b>main1</b> samples one channel,
+the accelerometer Y from PA22. 
+<b>main2</b> demonstrates using the sequencer sampling two channels,
+the accelerometer X from PB19 and 
+the accelerometer Z from PB18. 
+<b>main</b> interfaces the MKII joystick sampling two channels,
+the joystick X from PA25 and 
+the joystick Y from PA18. This example also inputs from the
+joystick switch.
+<br>&nbsp;<br>
+Derived from Texas Instrument code
+<ul>
+<li>adc12_single_conversion_vref_internal_LP_MSPM0G3507_nortos_ticlang</li>
+<li>adc12_single_conversion_LP_MSPM0G3507_nortos_ticlang</li>
+</ul>
+
+</td>
+
+</tr>
+</table>
+ </p>
+ 
+ <table class="MsoNormalTable"
+ style="border: 3pt outset ; background: rgb(252, 243, 144) none repeat scroll 0% 50%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; width: 100%;"
+ border="1" cellpadding="0" width="100%">
+        <tbody>
+          <tr>
+            <td>
+<p><b><span style="font-size: 18pt;">Hardware Required</b></span>
+<br>
+<ul>
+<li>MSPM0G3507 LaunchPad&trade; Development Kit (LP-MSPM0G3507)</li>
+<li>Educational BoosterPack MKII (BOOSTXL-EDUMKII)</li>
+</ul>
+<b><span style="font-size: 18pt;">Pin assignments</b></span>
+<br>
+<ul>
+<li>Digital Input: PA26 is MKII joystick Select button </li>
+<li>Analog Input: PA25 is MKII joystick horizontal (X) PA25_ADC0.2</li>
+<li>Analog Input: PA18 is MKII joystick vertical (Y) PA18_ADC1.3</li>
+<li>Analog Input: MKII is accelerometer X PB19__ADC1.6</li>
+<li>Analog Input: MKII is accelerometer Y PA22__ADC0.7</li>
+<li>Analog Input: MKII is accelerometer Z PB18__ADC1.5</li>
+<li>Output: PA0 is red LED1, index 0 in IOMUX PINCM table</li>
+<li>Output: PB22 is blue LED2, index 49 in IOMUX PINCM table</li>
+<li>Output: PB26 is red LED2, index 56 in IOMUX PINCM table</li>
+<li>Output: PB27 is green LED2, index 57 in IOMUX PINCM table</li>
+<li>Input: PA18 is S2 positive logic switch, index 39 in IOMUX PINCM table</li>
+<li>Input: PB21 is S3 negative logic switch, index 48 in IOMUX PINCM table</li>
+</ul>
+<b><span style="font-size: 18pt;">LaunchPad Jumpers</b></span>
+<br>
+<ul>
+<li>Remove J1, J2, J3: Disconnects OPA from the microcontroller</li> 
+<li>J4: Connects PA0 to red LED</li>
+<li>J5: Connects PB22 to blue LED2</li>
+<li>J6: Connects PB26 to red LED2</li>
+<li>J7: Connects PB27 to green LED2</li>
+</ul>
+</p> </td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
+<p>
+Simplified BSD License (FreeBSD License)
+Copyright &copy; 2023, Jonathan Valvano, All rights reserved.<br>
+&nbsp;<br> 
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:<br>
+<ol>
+<li>Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.</li></ol>
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br>
+&nbsp;<br> 
+The views and conclusions contained in the software and documentation are
+those of the authors and should not be interpreted as representing official
+policies, either expressed or implied, of the FreeBSD Project.
+<br> &nbsp;
+</p>
+<p>For more information, see <a href="http://users.ece.utexas.edu/~valvano/">
+http://users.ece.utexas.edu/~valvano/</a>.
+</p>
+</div>
+</body>
+</html>
