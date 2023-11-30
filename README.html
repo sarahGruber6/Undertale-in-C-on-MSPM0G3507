@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:w="urn:schemas-microsoft-com:office:word"
+ xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+ xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+ xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=windows-1252">
+  <meta name="ProgId" content="Word.Document">
+  <meta name="Generator" content="Microsoft Word 14">
+  <meta name="Originator" content="Microsoft Word 14">
+  <base target="_parent">
+  <link rel="Edit-Time-Data" href="index_files/editdata.mso">
+  <title>ECE319K_Lab9</title>
+  <o:smarttagtype
+ namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="place"></o:smarttagtype><o:smarttagtype
+ namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="PlaceName"></o:smarttagtype>
+  <o:smarttagtype
+ namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="PlaceType"></o:smarttagtype>
+  <link rel="themeData" href="index_files/themedata.thmx">
+  <link rel="colorSchemeMapping"
+ href="index_files/colorschememapping.xml">
+  <style>
+  </style>
+</head>
+<body style="background-color: white;" alink="#0000ff" lang="EN-US"
+ link="blue" vlink="#c40026">
+<div class="WordSection1">
+<p style="text-align: center;" align="center"><span
+ style="font-size: 18pt;">ECE319K_Lab9</span><br>
+<table class="MsoNormalTable"
+ style="border: 3pt outset ; background: rgb(255, 204, 153) none repeat scroll 0% 50%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; width: 100%;"
+ border="1" cellpadding="0" width="100%">
+<tr>
+<td>
+<p><b><span style="font-size: 18pt;">Readme</b></span>
+            <br> &nbsp;<br>
+This is will be the starter project for ECE319K Lab 9. 
+For more information about Lab 9, see 
+<a href="https://docs.google.com/document/d/1jTirjKJEecPcTYQ2Q7XTRVthQzV7BMr5INipn7f04u8/" target ="_blank">
+Lab 9. Embedded System Design</a>.
+When running this project, the ST7735R must be connected. The slidepot is connected to PB18.  <br>&nbsp;<br>
+ Derived from Texas Instrument code
+<ul>
+<li>spi_controller_multibyte_fifo_poll_LP_MSPM0G3507_nortos_ticlang</li>
+<li>spi_controller_command_data_control_LP_MSPM0G3507_nortos_ticlang</li>
+<li>spi_peripheral_register_format_LP_MSPM0G3507_nortos_ticlang</li>
+
+</ul> </p>
+</td>
+
+</tr>
+</table>
+
+
+ <table class="MsoNormalTable"
+ style="border: 3pt outset ; background: rgb(252, 243, 144) none repeat scroll 0% 50%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial; width: 100%;"
+ border="1" cellpadding="0" width="100%">
+        <tbody>
+          <tr>
+            <td>
+<p><b><span style="font-size: 18pt;">Hardware Required</b></span>
+<br>
+<ul>
+<li>MSPM0G3507 LaunchPad&trade; Development Kit (LP-MSPM0G3507)</li>
+<li>We have tested 5 versions of the 160by128 pixel ST7735R
+<ol><li>Adafruit ST7735R Product ID: 358</li>
+<li>HiLetgo ST7735 TFT and SDC</li>
+<li>wide.hk ST7735R with ADXL335 accelerometer</li>
+<li>wide.hk ST7735R with ADXL345 accelerometer</li>
+<li>Tyenaza Tyenazaqhf72mi9s3</li></ol>
+</li>
+<li>Bourns PTA2043-2015CPB103 Mouser 652-PTA20432015CPB10</li>
+</ul>
+
+<b><span style="font-size: 18pt;">Pin assignments</b></span>
+
+<ul>
+<li>Serial: PA22 UART2 Rx (receive serial) connected to other microcontroller's PA8</li>
+<li>Serial: PA8 UART1 Tx (transmit serial) connected to other microcontroller's PA22</li>
+<li>GND connected to other microcontroller's GND</li>
+<li>Analog: PB18 ADC1 Channel 5, analog input</li>
+<li>Analog: PB20 ADC0 Channel 6, TExaS scope</li>
+<li>Serial: SPI1 SCLK: PB9 is ST7735R LCD clock CLK</li>
+<li>Serial: SPI1 CS0: PB6 is ST7735R LCD chip select TFT_CS</li>
+<li>Serial: SPI1 PICO: PB8 is ST7735R LCD data MOSI</li>
+<li>Output: PB15 is ST7735R LCD !RST  </li>
+<li>Output: PA13 is ST7735R LCD RS    </li>
+<li>Output: PB0, PB1, PB2, PB3, PB4 to 5-bit DAC</li>
+<li>Analog: PA15 12-bit DAC output </li>
+<li>Output: PA0 is red LED1, index 0 in IOMUX PINCM table</li>
+<li>Output: PB22 is blue LED2, index 49 in IOMUX PINCM table</li>
+<li>Output: PB26 is red LED2, index 56 in IOMUX PINCM table</li>
+<li>Output: PB27 is green LED2, index 57 in IOMUX PINCM table</li>
+<li>Input: PA18 is S2 positive logic switch, index 39 in IOMUX PINCM table</li>
+<li>Input: PB21 is S3 negative logic switch, index 48 in IOMUX PINCM table</li>
+</ul>
+<b><span style="font-size: 18pt;">LaunchPad Jumpers</b></span>
+<br>
+<ul>
+<li>Remove J16 J17 J18: Disconnects light sensor from the microcontroller PA22 PA27 PA26</li> 
+<li>J4: Connects PA0 to red LED</li>
+<li>J5: Connects PB22 to blue LED2</li>
+<li>J6: Connects PB26 to red LED2</li>
+<li>J7: Connects PB27 to green LED2</li>
+</ul>
+</p> </td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
+<p>
+Simplified BSD License (FreeBSD License)
+Copyright &copy; 2023, Jonathan Valvano, All rights reserved.<br>
+&nbsp;<br> 
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:<br>
+<ol>
+<li>Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.</li>
+<li>Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.</li></ol>
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br>
+&nbsp;<br> 
+The views and conclusions contained in the software and documentation are
+those of the authors and should not be interpreted as representing official
+policies, either expressed or implied, of the FreeBSD Project.
+<br> &nbsp;
+</p>
+<p>For more information, see <a href="http://users.ece.utexas.edu/~valvano/">
+http://users.ece.utexas.edu/~valvano/</a>.
+</p>
+</div>
+</body>
+</html>

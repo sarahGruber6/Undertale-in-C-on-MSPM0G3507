@@ -1,0 +1,144 @@
+// use main1 to observe special characters
+int main1(void){ // main1
+    char l;
+  __disable_irq();
+  PLL_Init(); // set bus speed
+  LaunchPad_Init();
+  ST7735_InitPrintf();
+  ST7735_FillScreen(0x0000);            // set screen to black
+  for(phrase_t myPhrase=HELLO; myPhrase<= GOODBYE; myPhrase++){
+    for(Language_t myL=English; myL<= French; myL++){
+         ST7735_OutString((char *)Phrases[LANGUAGE][myL]);
+      ST7735_OutChar(' ');
+         ST7735_OutString((char *)Phrases[myPhrase][myL]);
+      ST7735_OutChar(13);
+    }
+  }
+  Clock_Delay1ms(3000);
+  ST7735_FillScreen(0x0000);       // set screen to black
+  l = 128;
+  while(1){
+    Clock_Delay1ms(2000);
+    for(int j=0; j < 3; j++){
+      for(int i=0;i<16;i++){
+        ST7735_SetCursor(7*j+0,i);
+        ST7735_OutUDec(l);
+        ST7735_OutChar(' ');
+        ST7735_OutChar(' ');
+        ST7735_SetCursor(7*j+4,i);
+        ST7735_OutChar(l);
+        l++;
+      }
+    }
+  }
+}
+
+// use main2 to observe graphics
+int main2(void){ // main2
+  __disable_irq();
+  PLL_Init(); // set bus speed
+  LaunchPad_Init();
+  ST7735_InitPrintf();
+    //note: if you colors are weird, see different options for
+    // ST7735_InitR(INITR_REDTAB); inside ST7735_InitPrintf()
+  ST7735_FillScreen(ST7735_BLACK);
+  ST7735_DrawBitmap(22, 159, player, 16,15); // player ship bottom
+  ST7735_DrawBitmap(53, 151, player, 16,15);
+  ST7735_DrawBitmap(42, 159, player, 16,15); // player ship bottom
+  ST7735_DrawBitmap(62, 159, player, 16,15); // player ship bottom
+  ST7735_DrawBitmap(82, 159, player, 16,15); // player ship bottom
+  ST7735_DrawBitmap(0, 9, player, 16,15);
+  ST7735_DrawBitmap(20,9, SmallEnemy10pointB, 16,15);
+  ST7735_DrawBitmap(40, 9, SmallEnemy20pointA, 16,15);
+  ST7735_DrawBitmap(60, 9, SmallEnemy20pointB, 16,15);
+  ST7735_DrawBitmap(80, 9, SmallEnemy30pointA, 16,15);
+
+  for(uint32_t t=500;t>0;t=t-5){
+    SmallFont_OutVertical(t,104,6); // top left
+    Clock_Delay1ms(50);              // delay 50 msec
+  }
+  ST7735_FillScreen(0x0000);   // set screen to black
+  ST7735_SetCursor(1, 1);
+  ST7735_OutString("GAME OVER");
+  ST7735_SetCursor(1, 2);
+  ST7735_OutString("Nice try,");
+  ST7735_SetCursor(1, 3);
+  ST7735_OutString("Earthling!");
+  ST7735_SetCursor(2, 4);
+  ST7735_OutUDec(1234);
+  while(1){
+  }
+}
+
+// use main3 to test switches and LEDs
+int main3(void){ // main3
+    uint32_t joystickX, joystickY, joystickZ, button, button1;
+  __disable_irq();
+  PLL_Init(); // set bus speed
+  LaunchPad_Init();
+  ST7735_InitPrintf();
+    //note: if you colors are weird, see different options for
+    // ST7735_InitR(INITR_REDTAB); inside ST7735_InitPrintf()
+  ST7735_FillScreen(ST7735_BLACK);
+  Switch_Init(); // initialize switches
+  JoyStick_Init();
+  LED_Init(); // initialize LED
+  ADC_InitDual(ADC1,6,5,ADCVREF_VDDA); //accelerometer X,Z (analog)
+  ADC0_Init(7,ADCVREF_VDDA); //accelerometer Y (analog)
+  while(1){
+      // Read joystick position
+
+      button = JoyStick_InButton();
+      button1 = JoyStick_InButton1();
+
+      // Read accelerometer data
+      ADC_InDual(ADC1, &joystickX, &joystickZ);
+      joystickY = ADC0_In();
+
+      // Display the values on the LCD
+      ST7735_SetCursor(0, 0);
+      ST7735_OutString("Joystick X: ");
+      ST7735_OutUDec(joystickX);
+      ST7735_SetCursor(0, 1);
+      ST7735_OutString("Joystick Y: ");
+      ST7735_OutUDec(joystickY);
+      ST7735_SetCursor(0, 2);
+      ST7735_OutString("Joystick Z: ");
+      ST7735_OutUDec(joystickZ);
+      ST7735_SetCursor(0, 3);
+      ST7735_OutString("Button 1: ");
+      ST7735_OutUDec(button);
+      ST7735_SetCursor(0, 4);
+      ST7735_OutString("Button 2: ");
+      ST7735_OutUDec(button1);
+  }
+}
+// use main4 to test sound outputs
+int main4(void){ uint32_t last=0,now;
+  __disable_irq();
+  PLL_Init(); // set bus speed
+  LaunchPad_Init();
+  Switch_Init(); // initialize switches
+  LED_Init(); // initialize LED
+  Sound_Init();  // initialize sound
+  TExaS_Init(ADC0,6,0); // ADC1 channel 6 is PB20, TExaS scope
+  __enable_irq();
+  while(1){
+  /*  now = Switch_In(); // one of your buttons
+    if((last == 0)&&(now == 1)){
+      Sound_Shoot(); // call one of your sounds
+    }
+    if((last == 0)&&(now == 2)){
+      Sound_Killed(); // call one of your sounds
+    }
+    if((last == 0)&&(now == 4)){
+      Sound_Explosion(); // call one of your sounds
+    }
+    if((last == 0)&&(now == 8)){
+      Sound_Fastinvader1(); // call one of your sounds
+    }
+    last = now;
+    */
+    // modify this to test all your sounds
+  }
+}
