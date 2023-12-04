@@ -1,5 +1,4 @@
 # Undertale-in-C-on-MSPM0G3507
-# Made for 319k Fall 2023, uses DAC for speaker, joystick, 2 buttons. 4 IRQs for game engine, attacks, and sound. Won the game competition!
 
 # DAC runs on PB0 through PB4
 
@@ -25,4 +24,4 @@
 # VCC    (pin 2)       to +3.3 V
 # GND    (pin 1)       to ground
 
-# hopefully this code helps some poor sod, as there are very few resources for this chip as of yet. if you have any questions or need help feel free to message me here or on Instagram @germanwaffles
+# if you have any questions or need help feel free to message me here or on Instagram @germanwaffles
